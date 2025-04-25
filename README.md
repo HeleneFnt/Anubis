@@ -59,4 +59,41 @@ http://localhost:8923
 
 Requests will go through Nginx, then through Anubis, before reaching the target service.
 
+## Simulate a simulated attack with `nikto`
+
+**Nikto** is a web vulnerability scanner that can be used to conduct a security audit on your web server. It can simulate a series of attacks, such as injection attempts or malicious requests, allowing you to test Anubis's ability to block these attacks.
+
+#### Prerequisites:
+
+- **Install Nikto** on your local machine if it is not already installed.
+
+  ```bash
+  sudo apt install nikto
+  ```
+
+#### Using Nikto:
+
+ **Run a Nikto scan** against your local Anubis instance.
+
+   Example command to scan the URL `http://localhost:8923`:
+   ```bash
+   nikto -h http://localhost:8923
+   ```
+
+   This command will send various HTTP requests simulating attacks (SQL injection, XSS, etc.) and observe how the server reacts.
+
+
+Test using `curl`
+
+```sh
+curl -i -A "AmazonBot" http://localhost:8923 
+curl -i -A "ChatGPT-User" http://localhost:8923
+curl -i -A "Bot" http://localhost:8923 
+```  
+
+
+
+   ---
+
+
 *Copyright Hélène Finot - Formation DevOps 2025*
